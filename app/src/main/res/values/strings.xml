@@ -1,4 +1,9 @@
 <resources>
     <string name="app_name">Chat Box</string>
     <string name="title_activity_log_in">LogIn</string>
+    <string name="name">Name</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="log_in">Log In</string>
 </resources>
