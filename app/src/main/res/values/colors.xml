@@ -9,4 +9,9 @@
     <color name="white">#FFFFFFFF</color>
     <color name="primary_ui">#053D8F</color>
 
+    <color name="blue">#053D8F</color>
+    <color name="blue_light">#0649ac</color>
+    <color name="orange_ui">#ff8533</color>
+    <color name="orange_dark">#e65c00</color>
+
 </resources>
