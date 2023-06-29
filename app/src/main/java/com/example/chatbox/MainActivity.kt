@@ -73,6 +73,10 @@ class MainActivity : AppCompatActivity() {
             startActivity(intent)
             return true
         }
+        if(item.itemId== R.id.updateProfile){
+            val intent= Intent(this@MainActivity, UpdateProfile::class.java)
+            startActivity(intent)
+        }
         return true
 
     }
