@@ -18,7 +18,7 @@ class UpdateProfile : AppCompatActivity() {
     private lateinit var profileImageView: CircleImageView
     private lateinit var selectProfilePicture: Button
     private lateinit var updateProfilePicture: Button
-    private lateinit var currentUserUid:String
+    private lateinit var currentUserUid: String
 
     private lateinit var mAuth: FirebaseAuth
     private lateinit var mDbRef: DatabaseReference
@@ -27,24 +27,31 @@ class UpdateProfile : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_update_profile)
 
-        profileImageView=findViewById(R.id.profileImageUpdateProfile)
-        selectProfilePicture=findViewById(R.id.selectProfilePictureButton)
-        updateProfilePicture= findViewById(R.id.updateProfilePictureButton)
+        profileImageView = findViewById(R.id.profileImageUpdateProfile)
+        selectProfilePicture = findViewById(R.id.selectProfilePictureButton)
+        updateProfilePicture = findViewById(R.id.updateProfilePictureButton)
 
-        mAuth= FirebaseAuth.getInstance()
-        mDbRef= FirebaseDatabase.getInstance().getReference()
-        currentUserUid= mAuth.currentUser?.uid.toString()
+        mAuth = FirebaseAuth.getInstance()
+        mDbRef = FirebaseDatabase.getInstance().getReference()
+        currentUserUid = mAuth.currentUser?.uid.toString()
 
         //value = DataSnapshot item = mDbRef . child ("user").child()
 
-        mDbRef.child("user").addValueEventListener(object : ValueEventListener{
+        mDbRef.child("user").addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
 
-                for (postSnapshot in snapshot.children){
-                    val currentUser= postSnapshot.getValue(User::class.java)
-                    if(currentUser?.profileImageUrl!=null){
-                        Log.d("Update Profile","Enter in the Update Profile If check, URL: ${currentUser.profileImageUrl}")
-                        Picasso.get().load(currentUser.profileImageUrl).placeholder(R.drawable.profile_image).into(profileImageView)
+                for (postSnapshot in snapshot.children) {
+                    val currentUser = postSnapshot.getValue(User::class.java)
+                    if (mAuth.currentUser?.uid == currentUser?.uid) {
+
+                        if (currentUser?.profileImageUrl != null) {
+                            Log.d(
+                                "Update Profile",
+                                "Enter in the Update Profile If check, URL: ${currentUser.profileImageUrl}"
+                            )
+                            Picasso.get().load(currentUser.profileImageUrl)
+                                .placeholder(R.drawable.profile_image).into(profileImageView)
+                        }
                     }
 //                    else{
 //                        profileImageView.setImageResource(R.drawable.profile_image)
