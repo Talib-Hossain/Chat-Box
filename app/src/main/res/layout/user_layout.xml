@@ -4,53 +4,67 @@
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <LinearLayout
-        android:id="@+id/linearLayoutUser"
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardViewUserLayout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="80dp"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/guideLine"
         android:layout_marginTop="10dp"
-        android:orientation="horizontal"
-        android:weightSum="100">
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="10dp"
+        app:cardCornerRadius="8dp"
+        app:cardElevation="10dp">
 
-        <de.hdodenhof.circleimageview.CircleImageView
-            android:id="@+id/userLayoutProfileImage"
-            android:layout_width="70dp"
-            android:layout_height="70dp"
-            android:src="@drawable/profile_image"
-            app:civ_border_width="2dp"
-            app:civ_border_color="@color/primary_ui"
-            android:layout_marginLeft="10dp"
-            android:layout_weight="20"/>
-
-        <TextView
-            android:id="@+id/txtName"
+        <LinearLayout
+            android:id="@+id/linearLayoutUser"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:text="Talib"
-            android:textSize="30sp"
-            android:textStyle="bold"
-            android:paddingLeft="12dp"
-            android:paddingVertical="5dp"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            android:layout_weight="85"/>
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal"
+            android:weightSum="100">
 
-    </LinearLayout>
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/userLayoutProfileImage"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:src="@drawable/profile_image"
+                app:civ_circle_background_color="#D3D3D3"
+                app:civ_border_width="2dp"
+                app:civ_border_color="@color/primary_ui"
+                android:layout_marginLeft="10dp"
+                android:layout_weight="20"/>
 
+            <TextView
+                android:id="@+id/txtName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:text="Talib"
+                android:textColor="@color/primary_ui"
+                android:textSize="30sp"
+                android:textStyle="bold"
+                android:paddingLeft="12dp"
+                android:paddingVertical="5dp"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_weight="85"/>
 
-    
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="3dp"
-        android:background="@color/orange_dark"
-        app:layout_constraintTop_toBottomOf="@id/linearLayoutUser"
-        android:layout_marginTop="5dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
+        </LinearLayout>
 
+    </androidx.cardview.widget.CardView>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideLine"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="107dp" />
 </androidx.constraintlayout.widget.ConstraintLayout>
