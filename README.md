@@ -1,5 +1,5 @@
 # Chat-Box
-A simple Chatting Application.
+A simple Chatting Application. It include variety of features like user authentication, realtime chatting, updating profile etc.
 # Tech Used
 * Kotlin
 * XML
