@@ -6,11 +6,15 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.Button
 import android.widget.EditText
+import android.widget.FrameLayout
 import android.widget.Toast
+import com.google.android.material.textfield.TextInputLayout
 import com.google.firebase.auth.FirebaseAuth
 
 class LogIn : AppCompatActivity() {
 
+    private lateinit var etEmailLayout: TextInputLayout
+    private lateinit var etPasswordLayout: TextInputLayout
     private lateinit var etEmail: EditText
     private lateinit var edtPassword: EditText
     private lateinit var btnLogIn: Button
@@ -25,6 +29,8 @@ class LogIn : AppCompatActivity() {
 
         mAuth= FirebaseAuth.getInstance()
 
+        etEmailLayout=findViewById(R.id.etEmailLayout)
+        etPasswordLayout=findViewById(R.id.etPasswordLayout)
         etEmail = findViewById(R.id.etEmail)
         edtPassword= findViewById(R.id.etPassword)
         btnLogIn= findViewById(R.id.btnLogIn)
@@ -51,6 +57,8 @@ class LogIn : AppCompatActivity() {
                     finish()
                     startActivity(intent)
                 } else {
+                    etPasswordLayout.helperText="Wrong Credentials"
+                    etEmailLayout.helperText="Wrong Credentials"
                     Toast.makeText(this@LogIn, "Invalid User", Toast.LENGTH_SHORT).show()
                 }
             }
