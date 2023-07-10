@@ -13,5 +13,6 @@
     <color name="blue_light">#0649ac</color>
     <color name="orange_ui">#ff8533</color>
     <color name="orange_dark">#e65c00</color>
+    <color name="red">#FF0000</color>
 
 </resources>
