@@ -7,6 +7,7 @@ import android.util.Log
 import android.widget.Button
 import android.widget.EditText
 import android.widget.FrameLayout
+import android.widget.TextView
 import android.widget.Toast
 import com.google.android.material.textfield.TextInputLayout
 import com.google.firebase.auth.FirebaseAuth
@@ -18,7 +19,7 @@ class LogIn : AppCompatActivity() {
     private lateinit var etEmail: EditText
     private lateinit var edtPassword: EditText
     private lateinit var btnLogIn: Button
-    private lateinit var btnSignUp: Button
+    private lateinit var tvSignUp: TextView
 
     private lateinit var mAuth: FirebaseAuth
 
@@ -34,9 +35,9 @@ class LogIn : AppCompatActivity() {
         etEmail = findViewById(R.id.etEmail)
         edtPassword= findViewById(R.id.etPassword)
         btnLogIn= findViewById(R.id.btnLogIn)
-        btnSignUp= findViewById(R.id.btnSignUp)
+        tvSignUp= findViewById(R.id.signupText)
 
-        btnSignUp.setOnClickListener {
+        tvSignUp.setOnClickListener {
             val intent= Intent(this, SignUp::class.java)
             startActivity(intent)
         }
