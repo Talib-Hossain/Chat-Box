@@ -7,7 +7,7 @@ A simple Chatting Application. It include variety of features like user authenti
 # Screenshots
 Here is some screenshot below
 ## Login & Sign Up Screen
-<img src="https://github.com/Talib-Hossain/Chat-Box/assets/83373885/a788e96a-341e-42b6-a951-c8b991341cbd" width="200" height="400" />
+<img src="https://github.com/Talib-Hossain/Chat-Box/assets/83373885/b18bc5d7-ee24-4847-8f51-3d88ce1017ed" width="200" height="400" />
 <img src="https://github.com/Talib-Hossain/Chat-Box/assets/83373885/b5e9bf19-8d6c-4dce-9f87-1817466c9c1c" width="200" height="400" />
 
 ## List of users
