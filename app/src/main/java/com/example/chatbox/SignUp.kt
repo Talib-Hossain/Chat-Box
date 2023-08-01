@@ -23,7 +23,8 @@ class SignUp : AppCompatActivity() {
         val TAG = "SignUp"
     }
 
-
+    val basicURL =
+        "https://firebasestorage.googleapis.com/v0/b/chat-box-8efe2.appspot.com/o/images%2Fprofile_image.png?alt=media&token=dae2fd64-be76-43af-8e08-eb86ab2567b4"
     private lateinit var edtName: EditText
     private lateinit var etEmail: EditText
     private lateinit var edtPassword: EditText
@@ -80,6 +81,7 @@ class SignUp : AppCompatActivity() {
 
                 uploadImageToFirebaseStorage { profileImageUrl ->
                     if (profileImageUrl != null) {
+                        Log.d("Talib", "In the if part of ADD user profile url: $profileImageUrl")
                         addUserToDatabase(
                             name, email, mAuth.currentUser?.uid!!, profileImageUrl
                         )
@@ -92,12 +94,16 @@ class SignUp : AppCompatActivity() {
                 Toast.makeText(this@SignUp, "Error Occured", Toast.LENGTH_SHORT).show()
             }
         }
-
     }
 
     private fun uploadImageToFirebaseStorage(callback: (String?) -> Unit) {
         var profileImageUrl: String = null.toString()
         //if (selectedPhotoUri == null) return
+        if (selectedPhotoUri == null) {
+            // If no profile image is selected, use the default URL
+            callback(basicURL)
+            return
+        }
         val filename = UUID.randomUUID().toString()
         val ref = FirebaseStorage.getInstance().getReference("/images/$filename")
 
@@ -119,7 +125,6 @@ class SignUp : AppCompatActivity() {
         }
         Log.d(TAG, "Checking URL before return: $profileImageUrl")
     }
-
 
     private fun getProfileImageUrl(profileImageUrl: String): String {
         return profileImageUrl
