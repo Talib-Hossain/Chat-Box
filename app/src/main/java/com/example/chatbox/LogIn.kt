@@ -48,7 +48,13 @@ class LogIn : AppCompatActivity() {
             val email = etEmail.text.toString()
             val password = edtPassword.text.toString()
 
-            login(email, password)
+            if (email.isEmpty() || password.isEmpty()) {
+                etEmailLayout.helperText = "Enter a Email"
+                etPasswordLayout.helperText = "Enter a Password"
+            } else {
+                login(email, password)
+            }
+
         }
 
         forgotPasswordTextView.setOnClickListener {

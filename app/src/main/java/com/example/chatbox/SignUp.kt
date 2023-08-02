@@ -10,6 +10,7 @@ import android.util.Log
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
+import com.google.android.material.textfield.TextInputLayout
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
@@ -25,6 +26,11 @@ class SignUp : AppCompatActivity() {
 
     val basicURL =
         "https://firebasestorage.googleapis.com/v0/b/chat-box-8efe2.appspot.com/o/images%2Fprofile_image.png?alt=media&token=dae2fd64-be76-43af-8e08-eb86ab2567b4"
+
+    private lateinit var nameEditTextLayout: TextInputLayout
+    private lateinit var passwordEditTextLayout: TextInputLayout
+    private lateinit var emailEditTextLayout: TextInputLayout
+
     private lateinit var edtName: EditText
     private lateinit var etEmail: EditText
     private lateinit var edtPassword: EditText
@@ -40,6 +46,10 @@ class SignUp : AppCompatActivity() {
 
         supportActionBar?.hide()
         mAuth = FirebaseAuth.getInstance()
+
+        nameEditTextLayout= findViewById(R.id.etNameLayout)
+        emailEditTextLayout=findViewById(R.id.etEmailLayout)
+        passwordEditTextLayout=findViewById(R.id.etPasswordLayout)
 
         etEmail = findViewById(R.id.etEmail)
         edtName = findViewById(R.id.etName)
@@ -59,7 +69,35 @@ class SignUp : AppCompatActivity() {
             val email = etEmail.text.toString()
             val password = edtPassword.text.toString()
 
-            signUp(name, email, password)
+            if (name.isEmpty()) {
+                nameEditTextLayout.helperText = "Enter a name"
+                emailEditTextLayout.helperText = ""
+                passwordEditTextLayout.helperText = ""
+            } else if (email.isEmpty()) {
+                nameEditTextLayout.helperText = ""
+                emailEditTextLayout.helperText = "Enter an email"
+                passwordEditTextLayout.helperText = ""
+            }
+            else if(!android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()){
+                nameEditTextLayout.helperText = ""
+                emailEditTextLayout.helperText = "Invalid Email Address"
+                passwordEditTextLayout.helperText = ""
+            }
+            else if (password.isEmpty()) {
+                nameEditTextLayout.helperText = ""
+                emailEditTextLayout.helperText = ""
+                passwordEditTextLayout.helperText = "Enter a password"
+            }
+            else if(password.length<6){
+                nameEditTextLayout.helperText = ""
+                emailEditTextLayout.helperText = ""
+                passwordEditTextLayout.helperText = "Enter a Valid password"
+            }
+            else {
+                Log.d("SignUpActivity","In the else part")
+                signUp(name, email, password)
+            }
+
         }
     }
 
