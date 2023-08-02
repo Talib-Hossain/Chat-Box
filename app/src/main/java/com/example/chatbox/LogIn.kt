@@ -54,7 +54,6 @@ class LogIn : AppCompatActivity() {
             } else {
                 login(email, password)
             }
-
         }
 
         forgotPasswordTextView.setOnClickListener {

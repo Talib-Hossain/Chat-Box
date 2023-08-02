@@ -47,9 +47,9 @@ class SignUp : AppCompatActivity() {
         supportActionBar?.hide()
         mAuth = FirebaseAuth.getInstance()
 
-        nameEditTextLayout= findViewById(R.id.etNameLayout)
-        emailEditTextLayout=findViewById(R.id.etEmailLayout)
-        passwordEditTextLayout=findViewById(R.id.etPasswordLayout)
+        nameEditTextLayout = findViewById(R.id.etNameLayout)
+        emailEditTextLayout = findViewById(R.id.etEmailLayout)
+        passwordEditTextLayout = findViewById(R.id.etPasswordLayout)
 
         etEmail = findViewById(R.id.etEmail)
         edtName = findViewById(R.id.etName)
@@ -77,24 +77,20 @@ class SignUp : AppCompatActivity() {
                 nameEditTextLayout.helperText = ""
                 emailEditTextLayout.helperText = "Enter an email"
                 passwordEditTextLayout.helperText = ""
-            }
-            else if(!android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()){
+            } else if (!android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
                 nameEditTextLayout.helperText = ""
                 emailEditTextLayout.helperText = "Invalid Email Address"
                 passwordEditTextLayout.helperText = ""
-            }
-            else if (password.isEmpty()) {
+            } else if (password.isEmpty()) {
                 nameEditTextLayout.helperText = ""
                 emailEditTextLayout.helperText = ""
                 passwordEditTextLayout.helperText = "Enter a password"
-            }
-            else if(password.length<6){
+            } else if (password.length < 6) {
                 nameEditTextLayout.helperText = ""
                 emailEditTextLayout.helperText = ""
                 passwordEditTextLayout.helperText = "Enter a Valid password"
-            }
-            else {
-                Log.d("SignUpActivity","In the else part")
+            } else {
+                Log.d("SignUpActivity", "In the else part")
                 signUp(name, email, password)
             }
 
