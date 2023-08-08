@@ -73,6 +73,7 @@
             android:id="@+id/etEmail"
             android:layout_width="300dp"
             android:layout_height="50dp"
+            android:inputType="textEmailAddress"
             android:paddingStart="15dp" />
 
     </com.google.android.material.textfield.TextInputLayout>
