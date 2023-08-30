@@ -8,6 +8,7 @@ A simple Chatting Application.
 * Kotlin
 * XML
 * Firebase
+* Material Design
 # Screenshots
 Here is some screenshot below
 ## Login & Sign Up Screen
